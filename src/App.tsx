@@ -26,7 +26,8 @@ import {
   ExternalLink,
   Linkedin,
   Twitter,
-  Facebook
+  Facebook,
+  Instagram
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
@@ -65,13 +66,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: Page, setCurrent
           className="flex items-center cursor-pointer group"
           onClick={() => setCurrentPage('home')}
         >
-          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3 group-hover:bg-blue-700 transition-colors">
-            <Calculator className="text-white w-6 h-6" />
-          </div>
-          <div>
-            <span className="text-xl font-bold text-gray-900 block leading-none">Alfred Tripp</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-semibold">Accountancy</span>
-          </div>
+          <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-20 w-auto object-contain" referrerPolicy="no-referrer" />
         </div>
 
         {/* Desktop Nav */}
@@ -149,18 +144,16 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
           <div className="flex items-center mb-6">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center mr-2">
-              <Calculator className="text-white w-5 h-5" />
-            </div>
-            <span className="text-xl font-bold">Alfred Tripp</span>
+            <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-16 w-auto object-contain brightness-0 invert" referrerPolicy="no-referrer" />
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             Simple, proactive accounting for UK small businesses. We help you save tax, stay compliant, and stay in control.
           </p>
           <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Linkedin size={20} /></a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Twitter size={20} /></a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Facebook size={20} /></a>
+            <a href="https://uk.linkedin.com/in/alfredtripp" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Linkedin size={20} /></a>
+            <a href="https://x.com/at_accountancy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Twitter size={20} /></a>
+            <a href="https://www.instagram.com/AlfredTrippAccountancy/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Instagram size={20} /></a>
+            <a href="https://www.facebook.com/AlfredTrippAccountant" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><Facebook size={20} /></a>
           </div>
         </div>
 
@@ -428,7 +421,7 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800&h=1000" 
+                src="/alfred.jpg" 
                 className="rounded-3xl shadow-2xl hover:scale-[1.02] transition-all duration-700" 
                 alt="Alfred Tripp" 
                 referrerPolicy="no-referrer"
@@ -650,7 +643,7 @@ const AboutPage = () => {
           </div>
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800&h=1000" 
+              src="/alfred.jpg" 
               className="rounded-3xl shadow-2xl" 
               alt="Alfred Tripp" 
               referrerPolicy="no-referrer"
