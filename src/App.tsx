@@ -29,6 +29,15 @@ import {
   Facebook,
   Instagram
 } from 'lucide-react';
+
+// Import assets
+import logo from './assets/black.png';
+import hmrc from './assets/hmrc.png';
+import quickbooks from './assets/quickbooks.png';
+import sage50 from './assets/Sage 50.png';
+import xero from './assets/Xero-Bronze-Partner-Logo.jpg';
+import aat from './assets/AAT.png';
+import alfred from './assets/alfred.jpg';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
 
@@ -66,7 +75,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: Page, setCurrent
           className="flex items-center cursor-pointer group"
           onClick={() => setCurrentPage('home')}
         >
-          <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-20 w-auto object-contain" />
+          <img src={logo} alt="Alfred Tripp Accountancy" className="h-20 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav */}
@@ -144,7 +153,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
           <div className="flex items-center mb-6">
-            <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-16 w-auto object-contain brightness-0 invert" />
+            <img src={logo} alt="Alfred Tripp Accountancy" className="h-16 w-auto object-contain brightness-0 invert" />
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             Simple, proactive accounting for UK small businesses. We help you save tax, stay compliant, and stay in control.
@@ -315,11 +324,11 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
           <div>
             <p className="text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-8">Professional Certifications & Partners</p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 transition-all duration-500">
-              <img src="/hmrc.png" alt="HM Revenue & Customs" className="h-10 md:h-12 object-contain" />
-              <img src="/quickbooks.png" alt="QuickBooks" className="h-8 md:h-10 object-contain" />
-              <img src="/Sage%2050.png" alt="Sage 50" className="h-8 md:h-10 object-contain" />
-              <img src="/Xero-Bronze-Partner-Logo.jpg" alt="Xero Bronze Partner" className="h-10 md:h-12 object-contain" />
-              <img src="/AAT.png" alt="AAT Licensed Accountant" className="h-10 md:h-12 object-contain" />
+              <img src={hmrc} alt="HM Revenue & Customs" className="h-10 md:h-12 object-contain" />
+              <img src={quickbooks} alt="QuickBooks" className="h-8 md:h-10 object-contain" />
+              <img src={sage50} alt="Sage 50" className="h-8 md:h-10 object-contain" />
+              <img src={xero} alt="Xero Bronze Partner" className="h-10 md:h-12 object-contain" />
+              <img src={aat} alt="AAT Licensed Accountant" className="h-10 md:h-12 object-contain" />
             </div>
           </div>
         </div>
@@ -421,7 +430,7 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
             </div>
             <div className="relative">
               <img 
-                src="/alfred.jpg" 
+                src={alfred} 
                 className="rounded-3xl shadow-2xl hover:scale-[1.02] transition-all duration-700" 
                 alt="Alfred Tripp" 
               />
@@ -642,7 +651,7 @@ const AboutPage = () => {
           </div>
           <div className="relative">
             <img 
-              src="/alfred.jpg" 
+              src={alfred} 
               className="rounded-3xl shadow-2xl" 
               alt="Alfred Tripp" 
             />
