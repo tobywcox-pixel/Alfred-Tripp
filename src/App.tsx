@@ -66,7 +66,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: Page, setCurrent
           className="flex items-center cursor-pointer group"
           onClick={() => setCurrentPage('home')}
         >
-          <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-20 w-auto object-contain" referrerPolicy="no-referrer" />
+          <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-20 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav */}
@@ -144,7 +144,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
           <div className="flex items-center mb-6">
-            <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-16 w-auto object-contain brightness-0 invert" referrerPolicy="no-referrer" />
+            <img src="/black.png" alt="Alfred Tripp Accountancy" className="h-16 w-auto object-contain brightness-0 invert" />
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             Simple, proactive accounting for UK small businesses. We help you save tax, stay compliant, and stay in control.
@@ -315,11 +315,11 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
           <div>
             <p className="text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-8">Professional Certifications & Partners</p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 transition-all duration-500">
-              <img src="/hmrc.png" alt="HM Revenue & Customs" className="h-10 md:h-12 object-contain" referrerPolicy="no-referrer" />
-              <img src="/quickbooks.png" alt="QuickBooks" className="h-8 md:h-10 object-contain" referrerPolicy="no-referrer" />
-              <img src="/Sage 50.png" alt="Sage 50" className="h-8 md:h-10 object-contain" referrerPolicy="no-referrer" />
-              <img src="/Xero-Bronze-Partner-Logo.jpg" alt="Xero Bronze Partner" className="h-10 md:h-12 object-contain" referrerPolicy="no-referrer" />
-              <img src="/AAT.png" alt="AAT Licensed Accountant" className="h-10 md:h-12 object-contain" referrerPolicy="no-referrer" />
+              <img src="/hmrc.png" alt="HM Revenue & Customs" className="h-10 md:h-12 object-contain" />
+              <img src="/quickbooks.png" alt="QuickBooks" className="h-8 md:h-10 object-contain" />
+              <img src="/Sage%2050.png" alt="Sage 50" className="h-8 md:h-10 object-contain" />
+              <img src="/Xero-Bronze-Partner-Logo.jpg" alt="Xero Bronze Partner" className="h-10 md:h-12 object-contain" />
+              <img src="/AAT.png" alt="AAT Licensed Accountant" className="h-10 md:h-12 object-contain" />
             </div>
           </div>
         </div>
@@ -424,7 +424,6 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
                 src="/alfred.jpg" 
                 className="rounded-3xl shadow-2xl hover:scale-[1.02] transition-all duration-700" 
                 alt="Alfred Tripp" 
-                referrerPolicy="no-referrer"
               />
               <div className="absolute -bottom-6 -left-6 bg-blue-600 text-white p-8 rounded-2xl shadow-xl max-w-xs">
                 <p className="italic text-lg mb-4">"Alfred has completely transformed how I view my business finances. I finally feel in control."</p>
@@ -646,7 +645,6 @@ const AboutPage = () => {
               src="/alfred.jpg" 
               className="rounded-3xl shadow-2xl" 
               alt="Alfred Tripp" 
-              referrerPolicy="no-referrer"
             />
             <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 max-w-xs">
               <div className="flex items-center mb-4">
