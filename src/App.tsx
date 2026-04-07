@@ -1506,8 +1506,20 @@ const ContactForm = () => {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        const data = await response.json();
-        setError(data.error || 'Something went wrong. Please try again.');
+        let errorMessage = 'Something went wrong. Please try again.';
+        try {
+          const data = await response.json();
+          errorMessage = data.error || errorMessage;
+        } catch (e) {
+          // If response is not JSON (e.g. 404 HTML page)
+          console.error('Error parsing response:', e);
+          if (response.status === 404) {
+            errorMessage = 'The contact service is currently unavailable (404).';
+          } else if (response.status === 500) {
+            errorMessage = 'The server encountered an error. Please try again later (500).';
+          }
+        }
+        setError(errorMessage);
       }
     } catch (err) {
       console.error('Submission error:', err);

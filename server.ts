@@ -1,16 +1,25 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
+import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
 
   app.use(express.json());
+
+  // Health Check Route
+  app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", env: process.env.NODE_ENV });
+  });
 
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
@@ -21,49 +30,51 @@ async function startServer() {
     }
 
     try {
-      // Configure nodemailer
-      // Note: For production, you'd use a real service like SendGrid, Mailgun, or Resend.
-      // For Gmail, you might need an App Password.
-      const transporter = nodemailer.createTransport({
-        service: process.env.EMAIL_SERVICE || "gmail",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
-
-      const mailOptions = {
-        from: `"${name}" <${email}>`,
-        to: "alfietripp@gmail.com",
-        subject: `Contact Form Submission: ${subject || "No Subject"}`,
-        text: `
-          Name: ${name}
-          Email: ${email}
-          Subject: ${subject || "N/A"}
-          
-          Message:
-          ${message}
-        `,
-        replyTo: email,
-      };
-
       // Only attempt to send if credentials are provided
       if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+        // Configure nodemailer
+        const transporter = nodemailer.createTransport({
+          service: process.env.EMAIL_SERVICE || "gmail",
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+          },
+        });
+
+        const mailOptions = {
+          from: `"${name}" <${email}>`,
+          to: "alfietripp@gmail.com",
+          subject: `Contact Form Submission: ${subject || "No Subject"}`,
+          text: `
+            Name: ${name}
+            Email: ${email}
+            Subject: ${subject || "N/A"}
+            
+            Message:
+            ${message}
+          `,
+          replyTo: email,
+        };
+
         await transporter.sendMail(mailOptions);
         console.log("Email sent successfully to alfietripp@gmail.com");
-        res.status(200).json({ message: "Message sent successfully!" });
+        return res.status(200).json({ message: "Message sent successfully!" });
       } else {
-        console.warn("Email credentials missing. Skipping email send.");
-        // In development, we might want to simulate success even if keys are missing
-        // but we should be clear about it.
-        res.status(200).json({ 
-          message: "Message received (Email simulation mode - credentials missing).",
+        console.warn("Email credentials missing (EMAIL_USER/EMAIL_PASS). Skipping email send.");
+        // In development or if keys are missing, we simulate success so the user doesn't see a "broken" form
+        // but we log the warning.
+        return res.status(200).json({ 
+          message: "Message received (Simulation mode).",
           warning: "Set EMAIL_USER and EMAIL_PASS in your environment to send real emails."
         });
       }
     } catch (error) {
       console.error("Error sending email:", error);
-      res.status(500).json({ error: "Failed to send message. Please try again later." });
+      const errorMessage = error instanceof Error ? error.message : "Internal Server Error";
+      return res.status(500).json({ 
+        error: "Failed to send message. Please try again later.",
+        details: process.env.NODE_ENV !== 'production' ? errorMessage : undefined
+      });
     }
   });
 
@@ -75,7 +86,7 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), "dist");
+    const distPath = path.join(__dirname, "dist");
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
