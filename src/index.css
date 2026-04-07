@@ -3,10 +3,57 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --animate-liquid: liquid 20s ease-in-out infinite;
+  --animate-blob: blob 7s infinite;
+
+  @keyframes liquid {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased text-gray-900;
+    @apply font-sans antialiased text-gray-900 bg-slate-50;
+    background-image: 
+      linear-gradient(to right, rgba(203, 213, 225, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(203, 213, 225, 0.1) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
+}
+
+.bg-plus-grid {
+  background-image: 
+    radial-gradient(circle, #cbd5e1 1px, transparent 1px),
+    linear-gradient(to right, #cbd5e1 1px, transparent 1px),
+    linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.bg-geometric-shapes {
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.03) 0%, transparent 40%),
+    linear-gradient(45deg, rgba(59, 130, 246, 0.02) 25%, transparent 25%, transparent 50%, rgba(59, 130, 246, 0.02) 50%, rgba(59, 130, 246, 0.02) 75%, transparent 75%, transparent);
+  background-size: 100% 100%, 100% 100%, 100px 100px;
+}
+
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  filter: contrast(150%) brightness(1000%);
+  opacity: 0.15;
+}
+
+.bg-soft-layers {
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.8) 0%, transparent 50%);
 }
