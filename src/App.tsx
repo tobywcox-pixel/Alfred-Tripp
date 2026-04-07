@@ -50,6 +50,7 @@ const alfie1 = '/alfie1.png';
 import alfie2 from './assets/alfie2.png';
 import alfie3 from './assets/alfie3.png';
 import alfie4 from './assets/alfie4.png';
+import alfie9 from './assets/alfie9.png';
 import stock1 from './assets/stock1.jpg';
 import blog1 from './assets/blog1.avif';
 import { motion, AnimatePresence } from 'motion/react';
@@ -385,7 +386,7 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
             >
               <div className="lg:hidden mb-12 max-w-[340px] relative">
                 <img 
-                  src={alfie1} 
+                  src={alfie9} 
                   alt="Alfred Tripp - Professional Accountant in Southampton and Hampshire" 
                   className="w-full h-auto object-cover rounded-[2rem] shadow-xl border border-white/40 rotate-1" 
                   referrerPolicy="no-referrer"
@@ -425,7 +426,7 @@ const HomePage = ({ setCurrentPage }: { setCurrentPage: (p: Page) => void }) => 
             >
               <div className="relative z-10">
                 <img 
-                  src={alfie1} 
+                  src={alfie9} 
                   alt="Alfred Tripp - Expert Small Business Accountant Hampshire" 
                   className="w-full h-auto object-cover rounded-[2.5rem] shadow-2xl border border-white/40 transform hover:scale-[1.02] transition-transform duration-500" 
                   referrerPolicy="no-referrer"
