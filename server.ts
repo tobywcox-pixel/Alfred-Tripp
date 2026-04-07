@@ -7,10 +7,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+console.log("SERVER: Initializing...");
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
+  console.log("SERVER: Starting server function...");
   const app = express();
   const PORT = 3000;
 
@@ -18,11 +21,13 @@ async function startServer() {
 
   // Health Check Route
   app.get("/api/health", (req, res) => {
+    console.log("SERVER: Health check requested");
     res.json({ status: "ok", env: process.env.NODE_ENV });
   });
 
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
+    console.log("SERVER: Contact form submission received");
     const { name, email, subject, message } = req.body;
 
     if (!name || !email || !message) {
